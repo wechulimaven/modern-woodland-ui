@@ -18,41 +18,32 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Container(
-        height: 70,
-        width: 100,
-        decoration: BoxDecoration(
-          color: colorWhite,
-          boxShadow: [
-            BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                offset: Offset.zero,
-                blurRadius: 15.0)
-          ],
-        ),
-        child: Center(
-          child: Wrap(
-            direction: Axis.vertical,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: [
-              Container(
-                height: 42,
-                width: 42,
-                child: SvgPicture.asset(
-                  iconPath,
-                  color: primaryColor,
+      child: CircleAvatar(
+        radius: 60,
+        backgroundColor: colorWhite,
+              child: Center(
+                child: Wrap(
+                  direction: Axis.vertical,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    Container(
+                      height: 42,
+                      width: 42,
+                      child: SvgPicture.asset(
+                        iconPath,
+                        color: primaryColor,
+                      ),
+                    ),
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        height: 1.5,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  height: 1.5,
-                ),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

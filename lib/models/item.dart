@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Item {
+  int id;
   String name;
   String imagePath;
   int discountPercent;
@@ -10,7 +11,8 @@ class Item {
   Map<String, List<String>> differentImageUrl;
 
   Item(
-      {@required this.name,
+      {@required id,
+        @required this.name,
       @required this.imagePath,
       @required this.originalPrice,
       @required this.rating,

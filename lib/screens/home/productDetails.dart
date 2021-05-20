@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:woodlandHw/constants/colors.dart';
 import 'package:woodlandHw/models/item.dart';
+import 'package:woodlandHw/screens/cartScreen/cartScreen.dart';
 import 'package:woodlandHw/widgets/product_image.dart';
 
 class DetailsScreen extends StatefulWidget {
@@ -226,7 +227,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   ),
                 ),
               ),
-              cartBtn,
+              cartBtn(context, widget.product),
             ],
           ),
         ),
@@ -235,45 +236,54 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 
-  Widget cartBtn = Container(
+  Widget cartBtn (context, Item item){return Container(
       margin: EdgeInsets.all(kDefaultPadding),
       padding: EdgeInsets.symmetric(
         horizontal: kDefaultPadding,
-        vertical: kDefaultPadding / 2,
+        vertical: kDefaultPadding / 3,
       ),
       decoration: BoxDecoration(
         color: Color(0xFFFCBF1E),
         borderRadius: BorderRadius.circular(30),
       ),
-      child: Row(
-        children: <Widget>[
-          // SvgPicture.asset(
-          //   'assets/icons/profile.svg',
-          //   height: 18,
-          // ),
-          // SizedBox(
-          //   width: kDefaultPadding / 2,
-          // ),
-          Text(
-            "Chat",
-            style: TextStyle(color: Colors.white),
-          ),
-          // It will cover all available space
-          Spacer(),
-          FlatButton.icon(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              'assets/icons/wallet.svg',
-              height: 18,
-            ),
-            label: Text(
-              "Add to Cart",
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        ],
-      ),
+      child: Center(
+        child: Row(
+          children: <Widget>[
+            // SvgPicture.asset(
+            //   'assets/icons/profile.svg',
+            //   height: 18,
+            // ),
+            // SizedBox(
+            //   width: kDefaultPadding / 2,
+            // ),
+            // Text(
+            //   "Chat",
+            //   style: TextStyle(color: Colors.white),
+            // ),
+            // It will cover all available space
+            Spacer(),
+            FlatButton.icon(
+              onPressed: () {
+                Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => cart(products:item),
+        ),
     );
+              },
+              icon: SvgPicture.asset(
+                'assets/icons/wallet.svg',
+                height: 18,
+              ),
+              label: Text(
+                "Add to Cart",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );}
 
   
 }
